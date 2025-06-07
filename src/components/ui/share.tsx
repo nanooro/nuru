@@ -1,11 +1,11 @@
-"use client"
+"use client";
 import { Popover, PopoverTrigger, PopoverContent } from "@ui/popover";
 import { Button } from "@ui/button";
 import { Share2, Twitter, Mail, Link } from "lucide-react";
 import { Command, CommandItem } from "@ui/command";
 
 export default function Share({ id, className }) {
-  const shareUrl = `https://nannuru.com/articles/${id}`;
+  const shareUrl = `https://nannuru.com/articleList/${id}`;
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(shareUrl);
@@ -50,7 +50,7 @@ export default function Share({ id, className }) {
           <CommandItem
             onSelect={() =>
               window.open(
-                `https://www.facebook.com/sharer/sharer.php?u=https://nannuru.com/articles/${id}`,
+                `https://www.facebook.com/sharer/sharer.php?u=https://nannuru.com/articleList/${id}`,
                 "_blank"
               )
             }
