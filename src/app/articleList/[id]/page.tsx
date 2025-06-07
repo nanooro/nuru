@@ -36,7 +36,7 @@ export default function articleRead() {
       Heading: "ಬೆಂಗಳೂರು ಟೌನ್ ಹಾಲ್ ನಲ್ಲಿ ವಿಶ್ವಕರ್ಮ ಸಮಾಜ ಬಾಂಧವರ…",
       subHeading: "",
       date: "Wed, 28 may",
-      rating: "",
+      rating: "5",
     },
   ];
 
