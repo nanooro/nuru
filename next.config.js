@@ -1,3 +1,4 @@
+
 // Skip type checking and use SWC only
 const nextConfig = {
   images: {
@@ -11,3 +12,4 @@ const nextConfig = {
 };
 
 export default nextConfig;
+
