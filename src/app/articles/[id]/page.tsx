@@ -51,7 +51,7 @@ export default function articleRead() {
 
   const article = articles.find((a) => a.id === parseInt(id));
   const currentUrl = `https://nannuru.com/articles/${id}`;
-*   const relatedArticles = articles;
+  const relatedArticles = articles;
 
   return (
     <>
