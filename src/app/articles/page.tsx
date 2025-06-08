@@ -12,8 +12,8 @@ export default function ArticlesList() {
     {
       id: 1,
       imgUrl: "https://i.postimg.cc/C53xrp9X/IMG-20250608-WA0001.jpg",
-      Heading:
-        "ಬೆಂಗಳೂರು: ಜೂನ್ 8 -6-2025     ಭಾನುವಾರ        ಬೆಂಗಳೂರಿನಲ್ಲಿ ವಿಶ್ವಕರ್ಮ ವಿದ್ಯಾರ್ಥಿಗಳ ಪ್ರತಿಭಪುರಸ್ಕಾರದ ಪೂರ್ವ ಬಾವಿ ಸಭೆ:",
+      Heading: "ಬೆಂಗಳೂರಿನಲ್ಲಿ ಯುವ ಪ್ರತಿಭೆಗಳಿಗೆ ಪ್ರತಿಭಾ ಪುರಸ್ಕಾರ",
+
       subHeading: "",
       date: "Sun, 8 june",
       rating: "",
