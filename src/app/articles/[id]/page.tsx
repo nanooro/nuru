@@ -17,7 +17,7 @@ export default function articleRead() {
   const articles = [
     {
       id: 1,
-      imgUrl: "https://i.postimg.cc/50mKKNwJ/image-20250516211308-0000.jpg",
+      imgUrl: "https://i.postimg.cc/C53xrp9X/IMG-20250608-WA0001.jpg",
       Heading:
         "ಬೆಂಗಳೂರು: ಜೂನ್ 8 -6-2025     ಭಾನುವಾರ        ಬೆಂಗಳೂರಿನಲ್ಲಿ ವಿಶ್ವಕರ್ಮ ವಿದ್ಯಾರ್ಥಿಗಳ ಪ್ರತಿಭಪುರಸ್ಕಾರದ ಪೂರ್ವ ಬಾವಿ ಸಭೆ:",
       subHeading: "",
