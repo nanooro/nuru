@@ -6,7 +6,7 @@ import Share from "@ui/share";
 import SocialCard from "@ui/socialCard";
 import ArticleCard from "@ui/articleCard";
 import Image from "next/image";
-import { useSearchParams, useParams } from "next/navigation";
+import { useParams } from "next/navigation";
 import Head from "next/head";
 
 export default function articleRead() {
@@ -120,11 +120,17 @@ export default function articleRead() {
           </div>
 
           <div className="flex flex-wrap gap-4 justify-center mt-24">
-            {relatedArticles.map((articles) => (
-              <Link href={`/articles/${articles.id}`} key={articles.id}>
+            {relatedArticles.map((article) => (
+              <Link href={`/articles/${article.id}`} key={article.id}>
                 <ArticleCard
-                  imgUrl={articles.imgUrl}
-                  Heading={articles.Heading}
+                  imgUrl={article.imgUrl}
+                  Heading={article.Heading}
+                  subHeading={article.subHeading}
+                  date={article.date}
+                  rating={article.rating}
+                />
+              </Link>
+            ))}
           </div>
         </div>
       </div>
