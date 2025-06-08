@@ -46,7 +46,7 @@ export default function ArticleList() {
       <Header setTheme={setTheme} theme={theme} />
       <div className="mt-24 flex flex-col gap-8">
         {articles.map((a) => (
-          <Link href={`/articleList/${a.id}`} key={a.id}>
+          <Link href={`/articles/${a.id}`} key={a.id}>
             <ArticleCard
               imgUrl={a.imgUrl}
               Heading={a.Heading}

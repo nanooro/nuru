@@ -14,7 +14,7 @@ export default function Hero() {
         </span>
       </h1>{" "}
       <div className="fixed -mt-24 w-screen h-screen bg-[radial-gradient(circle_at_bottom_right,_rgba(255,0,128,0.3),_transparent_70%)] flex flex-col justify-center items-center">
-        <Link href="/articleList">
+        <Link href="/articles">
           <Button className="px-8 py-4 h-[60px] text-base">
             Read articles!
           </Button>

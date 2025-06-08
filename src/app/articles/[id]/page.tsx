@@ -7,6 +7,7 @@ import SocialCard from "@ui/socialCard";
 import ArticleCard from "@ui/articleCard";
 import Image from "next/image";
 import { useSearchParams, useParams } from "next/navigation";
+import Head from "next/head";
 
 export default function articleRead() {
   const { setTheme, theme } = useTheme();
@@ -23,7 +24,7 @@ export default function articleRead() {
       rating: "",
     },
     {
-      id: 2, 
+      id: 2,
       imgUrl: "https://i.postimg.cc/50mKKNwJ/image-20250516211308-0000.jpg",
       Heading: "ಶನಿವಾರಸಂತೆಯ ಕಾಳಿಕಾಂಬ ದೇವಾಲಯದ ವಾರ್ಷಿಕೋತ್ಸವ",
       subHeading: "",
@@ -40,12 +41,24 @@ export default function articleRead() {
     },
   ];
 
-  const article = articles.find((a) => a.id === parseInt(id)) || articles[0];
+  const article = articles.find((a) => a.id === parseInt(id));
   const currentUrl = typeof window !== "undefined" ? window.location.href : "";
   const relatedArticles = articles;
 
   return (
     <>
+      <Head>
+        <meta
+          property="og:image"
+          content={article.imgUrl}
+          key={`og-image-https://via.placeholder.com/800x400.png?text=Placeholder+Image`}
+        />
+        <link
+          rel="image_src"
+          href={article.imgUrl}
+          key={`image-src-${article.id}`}
+        />
+      </Head>
       <div className="mt-12">
         <Header setTheme={setTheme} theme={theme} />
         <div className="p-4 max-w-3xl mx-auto">
