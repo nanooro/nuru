@@ -60,7 +60,11 @@ export default function articleRead() {
         <div className="p-4 max-w-3xl mx-auto">
           <div className="flex">
             <h1 className="text-2xl font-bold">{article.Heading}</h1>
-            <Share className="ml-auto flex" imageUrl={article.imgUrl} />
+            <Share
+              className="ml-auto flex"
+              id={article.id}
+              imageUrl={article.imgUrl}
+            />
           </div>
 
           <p className="text-sm text-gray-500">{article.date}</p>
