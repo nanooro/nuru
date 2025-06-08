@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import Header from "../../../components/ui/header";
+import Header from "../../components/ui/header";
 import { useTheme } from "next-themes";
 import SocialCard from "@ui/socialCard";
 import ArticleCard from "@ui/articleCard";
