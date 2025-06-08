@@ -1,55 +1,37 @@
 "use client";
 import Link from "next/link";
-import Header from "../../../components/ui/header";
+import Header from "../../components/ui/header";
 import { useTheme } from "next-themes";
 import Share from "@ui/share";
 import SocialCard from "@ui/socialCard";
 import ArticleCard from "@ui/articleCard";
 import Image from "next/image";
-import { useSearchParams, useParams } from "next/navigation";
+import { useParams } from "next/navigation";
 import Head from "next/head";
 
 export default function articleRead() {
   const { setTheme, theme } = useTheme();
   const params = useParams();
-  const id = params.id;
+  const id = params?.id;
 
   const articles = [
-    // {
-    //   id: 1,
-    //   imgUrl: "https://i.postimg.cc/5t9dV556/1000174880-removebg-preview.png",
-    //   Heading: "Chitradurga",
-    //   subHeading: "",
-    //   date: "May 11, 2025.",
-    //   rating: "",
-    // },
-    // {
-    //   id: 2,
-    //   imgUrl: "https://i.postimg.cc/50mKKNwJ/image-20250516211308-0000.jpg",
-    //   Heading: "ಶನಿವಾರಸಂತೆಯ ಕಾಳಿಕಾಂಬ ದೇವಾಲಯದ ವಾರ್ಷಿಕೋತ್ಸವ",
-    //   subHeading: "",
-    //   date: "Fri, 16 may",
-    //   rating: "",
-    // },
-    // {
-      //   id: 3,
-    //   imgUrl: "https://i.postimg.cc/3wKmqSD3/IMG-20250528-WA0011.jpg",
-    //   Heading: "ಬೆಂಗಳೂರು ಟೌನ್ ಹಾಲ್ ನಲ್ಲಿ ವಿಶ್ವಕರ್ಮ ಸಮಾಜ ಬಾಂಧವರ…",
-    //   subHeading: "",
-    //   date: "Wed, 28 may",
-    //   rating: "5",
-    // },
     {
-      id:1,
+      id: 1,
       imgUrl: "https://i.postimg.cc/50mKKNwJ/image-20250516211308-0000.jpg",
-      Heading:"ಬೆಂಗಳೂರು: ಜೂನ್ 8 -6-2025     ಭಾನುವಾರ        ಬೆಂಗಳೂರಿನಲ್ಲಿ ವಿಶ್ವಕರ್ಮ ವಿದ್ಯಾರ್ಥಿಗಳ ಪ್ರತಿಭಪುರಸ್ಕಾರದ ಪೂರ್ವ ಬಾವಿ ಸಭೆ:",
-      subheading:"",
-      date:"Sun, 8 june",
-      rating:""
-    }
+      Heading:
+        "ಬೆಂಗಳೂರು: ಜೂನ್ 8 -6-2025     ಭಾನುವಾರ        ಬೆಂಗಳೂರಿನಲ್ಲಿ ವಿಶ್ವಕರ್ಮ ವಿದ್ಯಾರ್ಥಿಗಳ ಪ್ರತಿಭಪುರಸ್ಕಾರದ ಪೂರ್ವ ಬಾವಿ ಸಭೆ:",
+      subHeading: "",
+      date: "Sun, 8 june",
+      rating: "",
+    },
   ];
 
-  const article = articles.find((a) => a.id === parseInt(id));
+  const article = articles.find((a) => a.id === parseInt(id || ""));
+  if (!article) {
+    // Show fallback UI or nothing to avoid crash
+    return <div className="p-4 max-w-3xl mx-auto mt-12">Article not found</div>;
+  }
+
   const currentUrl = `https://nannuru.com/articles/${id}`;
   const relatedArticles = articles;
 
@@ -119,14 +101,14 @@ export default function articleRead() {
           </div>
 
           <div className="flex flex-wrap gap-4 justify-center mt-24">
-            {relatedArticles.map((articles) => (
-              <Link href={`/articles/${articles.id}`} key={articles.id}>
+            {relatedArticles.map((article) => (
+              <Link href={`/articles/${article.id}`} key={article.id}>
                 <ArticleCard
-                  imgUrl={articles.imgUrl}
-                  Heading={articles.Heading}
-                  subHeading={articles.subHeading}
-                  date={articles.date}
-                  rating={articles.rating}
+                  imgUrl={article.imgUrl}
+                  Heading={article.Heading}
+                  subHeading={article.subHeading}
+                  date={article.date}
+                  rating={article.rating}
                 />
               </Link>
             ))}
@@ -136,4 +118,3 @@ export default function articleRead() {
     </>
   );
 }
-
