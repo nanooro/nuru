@@ -15,35 +15,43 @@ export default function articleRead() {
   const id = params.id;
 
   const articles = [
+    // {
+    //   id: 1,
+    //   imgUrl: "https://i.postimg.cc/5t9dV556/1000174880-removebg-preview.png",
+    //   Heading: "Chitradurga",
+    //   subHeading: "",
+    //   date: "May 11, 2025.",
+    //   rating: "",
+    // },
+    // {
+    //   id: 2,
+    //   imgUrl: "https://i.postimg.cc/50mKKNwJ/image-20250516211308-0000.jpg",
+    //   Heading: "ಶನಿವಾರಸಂತೆಯ ಕಾಳಿಕಾಂಬ ದೇವಾಲಯದ ವಾರ್ಷಿಕೋತ್ಸವ",
+    //   subHeading: "",
+    //   date: "Fri, 16 may",
+    //   rating: "",
+    // },
+    // {
+      //   id: 3,
+    //   imgUrl: "https://i.postimg.cc/3wKmqSD3/IMG-20250528-WA0011.jpg",
+    //   Heading: "ಬೆಂಗಳೂರು ಟೌನ್ ಹಾಲ್ ನಲ್ಲಿ ವಿಶ್ವಕರ್ಮ ಸಮಾಜ ಬಾಂಧವರ…",
+    //   subHeading: "",
+    //   date: "Wed, 28 may",
+    //   rating: "5",
+    // },
     {
-      id: 1,
-      imgUrl: "https://i.postimg.cc/5t9dV556/1000174880-removebg-preview.png",
-      Heading: "Chitradurga",
-      subHeading: "",
-      date: "May 11, 2025.",
-      rating: "",
-    },
-    {
-      id: 2,
+      id:1,
       imgUrl: "https://i.postimg.cc/50mKKNwJ/image-20250516211308-0000.jpg",
-      Heading: "ಶನಿವಾರಸಂತೆಯ ಕಾಳಿಕಾಂಬ ದೇವಾಲಯದ ವಾರ್ಷಿಕೋತ್ಸವ",
-      subHeading: "",
-      date: "Fri, 16 may",
-      rating: "",
-    },
-    {
-      id: 3,
-      imgUrl: "https://i.postimg.cc/3wKmqSD3/IMG-20250528-WA0011.jpg",
-      Heading: "ಬೆಂಗಳೂರು ಟೌನ್ ಹಾಲ್ ನಲ್ಲಿ ವಿಶ್ವಕರ್ಮ ಸಮಾಜ ಬಾಂಧವರ…",
-      subHeading: "",
-      date: "Wed, 28 may",
-      rating: "5",
-    },
+      Heading:"ಬೆಂಗಳೂರು: ಜೂನ್ 8 -6-2025     ಭಾನುವಾರ        ಬೆಂಗಳೂರಿನಲ್ಲಿ ವಿಶ್ವಕರ್ಮ ವಿದ್ಯಾರ್ಥಿಗಳ ಪ್ರತಿಭಪುರಸ್ಕಾರದ ಪೂರ್ವ ಬಾವಿ ಸಭೆ:",
+      subheading:"",
+      date:"Sun, 8 june",
+      rating:""
+    }
   ];
 
   const article = articles.find((a) => a.id === parseInt(id));
-  const currentUrl = typeof window !== "undefined" ? window.location.href : "";
-  const relatedArticles = articles;
+  const currentUrl = `https://nannuru.com/articles/${id}`;
+*   const relatedArticles = articles;
 
   return (
     <>
@@ -128,3 +136,4 @@ export default function articleRead() {
     </>
   );
 }
+
