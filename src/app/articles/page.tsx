@@ -18,11 +18,18 @@ export default function ArticlesList() {
       date: "Sun, 8 june",
       rating: "",
     },
-    // Add more articles here if needed
+    {
+      id:2,
+      imgUrl:"https://i.postimg.cc/9FNq5K58/IMG-20250609-WA0002.jpg",
+      Heading:"ಭವ್ಯಸನ್ಮಾನ - ಹಾಸನ: 9-06-2025, ಸೋಮವಾರ  ಬೂಕರ್ ಪ್ರಶಸ್ತಿ ಪುರಸ್ಕೃತ ಭಾನುಮುಸ್ತಕ್ ರವರಿಗೆ ಭವ್ಯಸನ್ಮಾನ",
+      subHeading:"",
+      date:"Mon, 9 june",
+      rating: "",
+    }  
   ];
 
   return (
-    <div className="mt-12">
+    <div className="">
       <Header setTheme={setTheme} theme={theme} />
       <div className="p-4 max-w-3xl mx-auto">
         <h1 className="text-3xl font-bold mb-6">Articles</h1>

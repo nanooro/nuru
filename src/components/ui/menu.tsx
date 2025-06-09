@@ -34,7 +34,7 @@ export default function Menu() {
           <Link href="/">Home</Link>
         </DropdownMenuItem>
         <DropdownMenuItem asChild>
-          <Link href="/articleList">articles</Link>
+          <Link href="/articles">articles</Link>
         </DropdownMenuItem>
         {/* <DropdownMenuItem asChild>
           <Link href="/contact">Contact</Link>

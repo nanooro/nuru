@@ -1,30 +1,39 @@
 "use client";
+import { useState } from "react";
 import { Popover, PopoverTrigger, PopoverContent } from "@ui/popover";
 import { Button } from "@ui/button";
-import { Share2, Twitter, Mail, Link } from "lucide-react";
+import { Share2, Twitter, Mail, Link, Check } from "lucide-react";
 import { Command, CommandItem } from "@ui/command";
 
 export default function Share({ id, className }) {
   const shareUrl = `https://nannuru.com/articles/${id}`;
+  const [copied, setCopied] = useState(false);
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(shareUrl);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1500); // resets icon after 1.5s
   };
 
   return (
     <Popover>
       <PopoverTrigger asChild>
         <Button variant="outline" className={className + " max-h-12"}>
-          <Share2 className="w-4 h-1 mr-2 " />
+          <Share2 className="w-4 h-1 mr-2" />
           Share
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-56 p-0 space-y-2">
         <Command>
           <CommandItem onSelect={copyToClipboard}>
-            <Link className="w-4 h-4 mr-2" />
+            {copied ? (
+              <Check className="w-4 h-4 mr-2 text-gray-500" />
+            ) : (
+              <Link className="w-4 h-4 mr-2" />
+            )}
             Copy Link
           </CommandItem>
+
           <CommandItem
             onSelect={() =>
               window.open(
@@ -36,6 +45,7 @@ export default function Share({ id, className }) {
             <Twitter className="w-4 h-4 mr-2 text-blue-500" />
             Share on Twitter
           </CommandItem>
+
           <CommandItem
             onSelect={() =>
               window.open(
@@ -47,10 +57,11 @@ export default function Share({ id, className }) {
             <Mail className="w-4 h-4 mr-2" />
             Share via Email
           </CommandItem>
+
           <CommandItem
             onSelect={() =>
               window.open(
-                `https://www.facebook.com/sharer/sharer.php?u=https://nannuru.com/articles/${id}`,
+                `https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`,
                 "_blank"
               )
             }
