@@ -18,8 +18,7 @@ export default function articleRead() {
     {
       id: 1,
       imgUrl: "https://i.postimg.cc/C53xrp9X/IMG-20250608-WA0001.jpg",
-      Heading:
-        "ಬೆಂಗಳೂರಿನಲ್ಲಿ ಯುವ ಪ್ರತಿಭೆಗಳಿಗೆ ಪ್ರತಿಭಾ ಪುರಸ್ಕಾರ",
+      Heading: "ಬೆಂಗಳೂರಿನಲ್ಲಿ ಯುವ ಪ್ರತಿಭೆಗಳಿಗೆ ಪ್ರತಿಭಾ ಪುರಸ್ಕಾರ",
       subHeading: "",
       date: "Sun, 8 june",
       rating: "",
@@ -55,7 +54,7 @@ export default function articleRead() {
           key={`image-src-${article.id}`}
         />
       </Head>
-      <div className="mt-12">
+      <div className="">
         <Header setTheme={setTheme} theme={theme} />
         <div className="p-4 max-w-3xl mx-auto">
           <div className="flex">
