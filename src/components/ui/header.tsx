@@ -15,7 +15,7 @@ export default function Header({ setTheme, theme }) {
   if (!mounted) return null;
 
   return (
-    <div className="sticky bg-white dark:bg-gray-900 top-0 left-0 w-screen h-12 flex justify-start items-center z-50">
+    <div className="sticky bg-white dark:bg-slate-900 top-0 left-0 w-screen h-12 flex justify-start items-center z-50">
       <div className="flex items-center justify-start w-full px-2 relative">
         <Link href="/">
           <h1 className="text-5xl font-bold">Nannuru</h1>
