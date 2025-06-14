@@ -16,13 +16,13 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://nannuru.com"),
-  title: "Nnnuru",
+  title: "Nannuru",
   description: "News and entertainment",
   icons: {
     icon: "/logo.jpg",
   },
   openGraph: {
-    title: "annuru",
+    title: "Nannuru",
     description: "News and entertainment",
     images: ["/logo.jpg"],
   },
