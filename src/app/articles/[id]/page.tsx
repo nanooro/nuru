@@ -73,7 +73,11 @@ export default function articleRead() {
             <h1 className="text-2xl font-bold">{article.Heading}</h1>
           </div>
 
-          <p className="text-sm text-gray-500 m-2">{article.date}</p>
+          <div className="w-full h-auto flex">
+            <p className="text-sm text-gray-500 m-2">{article.date}</p>
+            <Share className="ml-auto" />
+        
+          </div>
 
           <Image
             src={article.imgUrl}
@@ -82,7 +86,6 @@ export default function articleRead() {
             height={400}
             className="my-4 w-full rounded"
           />
-
           <p>{article.subHeading}</p>
           <p>{article.content}</p>
 
