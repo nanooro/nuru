@@ -19,13 +19,22 @@ export default function ArticlesList() {
       rating: "",
     },
     {
-      id:2,
-      imgUrl:"https://i.postimg.cc/9FNq5K58/IMG-20250609-WA0002.jpg",
-      Heading:"ಭವ್ಯಸನ್ಮಾನ - ಹಾಸನ: 9-06-2025, ಸೋಮವಾರ  ಬೂಕರ್ ಪ್ರಶಸ್ತಿ ಪುರಸ್ಕೃತ ಭಾನುಮುಸ್ತಕ್ ರವರಿಗೆ ಭವ್ಯಸನ್ಮಾನ",
-      subHeading:"",
-      date:"Mon, 9 june",
+      id: 2,
+      imgUrl: "https://i.postimg.cc/9FNq5K58/IMG-20250609-WA0002.jpg",
+      Heading:
+        "ಭವ್ಯಸನ್ಮಾನ - ಹಾಸನ: 9-06-2025, ಸೋಮವಾರ  ಬೂಕರ್ ಪ್ರಶಸ್ತಿ ಪುರಸ್ಕೃತ ಭಾನುಮುಸ್ತಕ್ ರವರಿಗೆ ಭವ್ಯಸನ್ಮಾನ",
+      subHeading: "",
+      date: "Mon, 9 june",
       rating: "",
-    }  
+    },
+    {
+      id: 3,
+      imgUrl: "https://i.postimg.cc/fWYT0fBV/IMG-20250610-WA0000.jpg",
+      Heading: "ಕನ್ನಡ ಸ ರೆ ಗ ಮ ಪ 21 ರ ವಿಜೇತೆ ಶಿವಾನಿಗೆ ಶುಭಾಶಯಗಳು",
+      subHeading: "",
+      date: "saturday, 14 june",
+      rating: "",
+    },
   ];
 
   return (
