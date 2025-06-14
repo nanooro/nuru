@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProviderClient } from "./ThemeProviderClient";
-import Head from "next/head";
+import Head from "next/head"; // ✅ add this
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,8 +15,21 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Nannuru",
+  metadataBase: new URL("https://nannuru.com"),
+  title: "Nnnuru",
   description: "News and entertainment",
+  icons: {
+    icon: "/logo.jpg",
+  },
+  openGraph: {
+    title: "annuru",
+    description: "News and entertainment",
+    images: ["/logo.jpg"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/logo.jpg"],
+  },
 };
 
 export default function RootLayout({
@@ -27,10 +40,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <Head>
-        <meta
-          name="google-site-verification"
-          content="MlJQxXghUFXOGlz0VcGRxdiNY2FWwQ5UvBJfqxWPV5k"
-        />
+        <link rel="icon" href="/logo.jpg" type="image/jpeg" />
       </Head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}

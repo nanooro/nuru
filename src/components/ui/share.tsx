@@ -6,6 +6,7 @@ import { Share2, Twitter, Mail, Link, Check } from "lucide-react";
 import { Command, CommandItem } from "@ui/command";
 
 export default function Share({ id, className }) {
+  // const shareUrl = `https://nannuru.com/articles/${id}`;
   const shareUrl = `https://nannuru.com/articles/${id}`;
   const [copied, setCopied] = useState(false);
 
