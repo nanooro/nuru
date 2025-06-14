@@ -15,7 +15,7 @@ export default function Header({ setTheme, theme }) {
   if (!mounted) return null;
 
   return (
-    <div className="sticky bg-white dark:bg-transparent top-0 left-0 w-screen h-12 flex justify-start items-center z-50">
+    <div className="sticky top-0 left-0 w-screen h-12 flex justify-start items-center z-50 bg-white/60 dark:bg-black/60 backdrop-blur-md">
       <div className="flex items-center justify-start w-full px-0 relative">
         <div className="sticky top-0 left-0 w-screen h-12 flex justify-start items-center z-50 bg-white/60 dark:bg-black/60 backdrop-blur-md">
           <div className="flex items-center justify-start w-full px-2 relative">
