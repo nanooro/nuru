@@ -152,7 +152,7 @@ export default function articleRead() {
                     <ArticleCard
                       imgUrl={article.imgUrl}
                       Heading={article.Heading}
-                      subHeading={article.subHeading}
+                      // subHeading={article.subHeading}
                       date={article.date}
                       rating={article.rating}
                     />

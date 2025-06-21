@@ -66,7 +66,7 @@ export default function ArticlesList() {
               <ArticleCard
                 imgUrl={article.imgUrl}
                 Heading={article.Heading}
-                subHeading={article.subHeading}
+                // subHeading={article.subHeading}
                 date={article.date}
                 rating={article.rating}
               />
@@ -78,7 +78,7 @@ export default function ArticlesList() {
               <ArticleCard
                 imgUrl={article.imgUrl}
                 Heading={article.Heading}
-                subHeading={article.subHeading}
+                // subHeading={article.subHeading}
                 date={new Date(article.created_at).toDateString()}
                 rating={article.rating || ""}
               />
