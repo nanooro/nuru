@@ -40,6 +40,17 @@ export default function ArticlesList() {
           ))}
         </div>
       </div>
+      <footer className="flex justify-center items-center mb-8 mt-8">
+        <a
+          href="https://create.nannuru.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex flex-col justify-center items-center text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 font-semibold text-sm"
+        >
+          🔗 Visit create.Nannuru.com<p className="block"> — </p>Your creative
+          space 🌐
+        </a>
+      </footer>
     </div>
   );
 }
