@@ -1,6 +1,4 @@
-// store.ts
 import { create } from "zustand";
-import { supabase } from "@/lib/supabaseClient";
 
 type Article = {
   id: number;
@@ -18,16 +16,26 @@ type ArticleStore = {
 export const useArticleStore = create<ArticleStore>((set) => ({
   articles: [],
   fetchArticles: async () => {
-    const { data, error } = await supabase
-      .from("Nannuru_articles_table")
-      .select("*")
-      .order("created_at", { ascending: false });
+    try {
+      console.log("🔄 Fetching real articles…");
+      const res = await fetch(
+        "https://dhnrkykrkxucnmymcekb.supabase.co/functions/v1/get-articles",
+        {
+          headers: {
+            apikey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+            Authorization: `Bearer ${process.env
+              .NEXT_PUBLIC_SUPABASE_ANON_KEY!}`,
+          },
+        }
+      );
 
-    if (error) {
-      console.error("Error fetching articles:", error);
-      return;
+      if (!res.ok) throw new Error(`status ${res.status}`);
+
+      const data = await res.json();
+      console.log("✅ Articles received:", data);
+      set({ articles: data || [] });
+    } catch (err: any) {
+      console.error("❌ Real fetch failed:", err.message || err);
     }
-
-    set({ articles: data || [] });
   },
 }));
