@@ -10,7 +10,7 @@ export default function Home() {
   const { setTheme, theme } = useTheme();
 
   return (
-    <div className="p-2 ">
+    <div className="p-0 ">
       <Header setTheme={setTheme} theme={theme} />
       <Hero />
     </div>
