@@ -38,12 +38,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <Head>
         <link rel="icon" href="/logo.jpg" type="image/jpeg" />
       </Head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased dark`}
+        style={{ colorScheme: "dark" }}
       >
         <ThemeProviderClient>{children}</ThemeProviderClient>
       </body>

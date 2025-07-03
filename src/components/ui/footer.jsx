@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import Header from "@/components/ui/header";
+import Footer from "@/components/ui/footer";
 import { useTheme } from "next-themes";
 import Share from "@/components/ui/share";
 import SocialCard from "@/components/ui/socialCard";
@@ -71,12 +72,14 @@ export default function ArticleRead({ id }: { id: string }) {
           key={`image-src-${article.id}`}
         />
       </Head>
+
       <div className="p-4 max-w-3xl mx-auto">
         <h1 className="text-2xl font-bold">{article.Heading}</h1>
         <div className="w-full h-auto flex">
           <p className="text-sm text-gray-500 m-2">{article.date}</p>
           <Share id={id} className="ml-auto" />
         </div>
+
         <Image
           src={article.imgUrl}
           alt=""
@@ -84,6 +87,7 @@ export default function ArticleRead({ id }: { id: string }) {
           height={400}
           className="my-4 w-full rounded"
         />
+
         <p>{article.subHeading}</p>
         <p>{article.content}</p>
 
@@ -131,6 +135,8 @@ export default function ArticleRead({ id }: { id: string }) {
           ))}
         </div>
       </div>
+
+      <Footer />
     </>
   );
 }

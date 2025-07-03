@@ -27,7 +27,7 @@ export default function ArticleCard({
         </div>
         <div className="flex flex-col flex-1 p-5">
           <div className="pb-5 mb-5 border-b border-gray-200 dark:border-gray-700">
-            <h3 className="mb-1 text-lg font-bold text-black dark:text-white">
+            <h3 className="text-lg font-semibold line-clamp-2 h-[3em] overflow-hidden">
               {Heading}
             </h3>
             <span className="text-sm text-gray-700 dark:text-gray-300">
