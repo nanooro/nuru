@@ -5,22 +5,21 @@ import { Button } from "@ui/button";
 import { Share2, Twitter, Mail, Link, Check } from "lucide-react";
 import { Command, CommandItem } from "@ui/command";
 
-export default function Share({ id, className }) {
-  // const shareUrl = `https://nannuru.com/articles/${id}`;
+export default function Share({ id, className = "" }) {
   const shareUrl = `https://nannuru.com/articles/${id}`;
   const [copied, setCopied] = useState(false);
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(shareUrl);
     setCopied(true);
-    setTimeout(() => setCopied(false), 1500); // resets icon after 1.5s
+    setTimeout(() => setCopied(false), 1500);
   };
 
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <Button variant="outline" className={className + " max-h-12"}>
-          <Share2 className="w-4 h-1 mr-2" />
+        <Button variant="outline" className={`${className} max-h-12`}>
+          <Share2 className="w-4 h-4 mr-2" />
           Share
         </Button>
       </PopoverTrigger>
@@ -49,10 +48,7 @@ export default function Share({ id, className }) {
 
           <CommandItem
             onSelect={() =>
-              window.open(
-                `mailto:?subject=Check this out&body=${shareUrl}`,
-                "_blank"
-              )
+              window.open(`mailto:?subject=Check this out&body=${shareUrl}`, "_blank")
             }
           >
             <Mail className="w-4 h-4 mr-2" />
@@ -79,10 +75,7 @@ export default function Share({ id, className }) {
 
           <CommandItem
             onSelect={() =>
-              window.open(
-                `https://api.whatsapp.com/send?text=${shareUrl}`,
-                "_blank"
-              )
+              window.open(`https://api.whatsapp.com/send?text=${shareUrl}`, "_blank")
             }
           >
             <img
