@@ -75,7 +75,7 @@ export default function ArticleRead({ id }: { id: string }) {
         <h1 className="text-2xl font-bold">{article.Heading}</h1>
         <div className="w-full h-auto flex">
           <p className="text-sm text-gray-500 m-2">{article.date}</p>
-          <Share id={id} className="ml-auto" />
+          <Share id={id} className=" ml-auto" />
         </div>
         <Image
           src={article.imgUrl}
