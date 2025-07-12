@@ -66,7 +66,7 @@ export default function ArticleRead({ id, more, article: initialArticle }: { id:
       </Head>
 
       <div className="p-4 max-w-3xl mx-auto">
-        <h1 className="text-2xl font-bold">{article.Heading}</h1>
+        <h1 className="text-xl sm:text-2xl font-bold">{article.Heading}</h1>
         <div className="flex items-center justify-between w-full my-2">
           <p className="text-sm text-gray-500">{article.date}</p>
           <Share id={id} />
@@ -88,7 +88,7 @@ export default function ArticleRead({ id, more, article: initialArticle }: { id:
         <hr className="my-4 border-t border-gray-300" />
 
         <fieldset className="mt-20 mb-20">
-          <legend className="text-3xl font-bold text-gray-700 mb-6 text-center">
+          <legend className="text-2xl sm:text-3xl font-bold text-gray-700 mb-6 text-center">
             Share this article ❤️
           </legend>
           <div className="flex-wrap gap-2 scale-110 flex justify-center items-center">

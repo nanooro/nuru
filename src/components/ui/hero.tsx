@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 export default function Hero({ theme }: { theme: string }) {
   return (
     <div className="flex flex-col items-center justify-center text-center min-h-[calc(100vh-10rem)] py-20 relative">
-      <h1 className="text-6xl md:text-8xl font-bold">
+      <h1 className="text-5xl sm:text-6xl md:text-8xl font-bold">
         News and{" "}
         <span className="inline-block">
           <span className="bg-gradient-to-r from-pink-500 to-yellow-500 text-transparent bg-clip-text">
