@@ -10,6 +10,8 @@ import Head from "next/head";
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 
+import AuthorInfo from "./AuthorInfo";
+
 export default function ArticleRead({ id, more, article: initialArticle }: { id: string, more: any[], article: any }) {
   const { setTheme, theme } = useTheme();
 
@@ -71,6 +73,7 @@ export default function ArticleRead({ id, more, article: initialArticle }: { id:
           <p className="text-sm text-gray-500">{article.date}</p>
           <Share id={id} />
         </div>
+        <AuthorInfo authorId={article.authorId} />
         <Image
           src={article.imgUrl}
           alt={article.Heading}
