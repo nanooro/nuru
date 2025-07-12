@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import Header from "@/components/ui/header";
+// import Header from "@/components/ui/header";
 import { useTheme } from "next-themes";
 import Share from "@/components/ui/share";
 import SocialCard from "@/components/ui/socialCard";
@@ -10,11 +10,11 @@ import Head from "next/head";
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 
-export default function ArticleRead({ id }: { id: string }) {
+export default function ArticleRead({ id, more, article: initialArticle }: { id: string, more: any[], article: any }) {
   const { setTheme, theme } = useTheme();
 
-  const [article, setArticle] = useState<any>(null);
-  const [moreArticles, setMoreArticles] = useState<any[]>([]);
+  const [article, setArticle] = useState<any>(initialArticle);
+  const [moreArticles, setMoreArticles] = useState<any[]>(more);
 
   useEffect(() => {
     const fetchArticle = async () => {
@@ -26,9 +26,7 @@ export default function ArticleRead({ id }: { id: string }) {
         .eq("id", id)
         .single();
 
-      if (!error && data) {
-        setArticle(data);
-      }
+      if (!error && data) setArticle(data);
     };
 
     const fetchMoreArticles = async () => {
@@ -38,14 +36,14 @@ export default function ArticleRead({ id }: { id: string }) {
         .neq("id", id)
         .limit(4);
 
-      if (!error && data) {
-        setMoreArticles(data);
-      }
+      if (!error && data) setMoreArticles(data);
     };
 
-    fetchArticle();
-    fetchMoreArticles();
-  }, [id]);
+    if (!initialArticle) {
+      fetchArticle();
+      fetchMoreArticles();
+    }
+  }, [id, initialArticle]);
 
   const currentUrl = `https://nannuru.com/articles/${id}`;
 
@@ -58,28 +56,24 @@ export default function ArticleRead({ id }: { id: string }) {
 
   return (
     <>
-      <Header setTheme={setTheme} theme={theme} />
+      {/* <Header setTheme={setTheme} theme={theme} /> */}
       <Head>
         <meta
           property="og:image"
           content={article.imgUrl}
           key={`og-image-${article.id}`}
         />
-        <link
-          rel="image_src"
-          href={article.imgUrl}
-          key={`image-src-${article.id}`}
-        />
       </Head>
+
       <div className="p-4 max-w-3xl mx-auto">
         <h1 className="text-2xl font-bold">{article.Heading}</h1>
-        <div className="w-full h-auto flex">
-          <p className="text-sm text-gray-500 m-2">{article.date}</p>
-          <Share id={id} className=" ml-auto" />
+        <div className="flex items-center justify-between w-full my-2">
+          <p className="text-sm text-gray-500">{article.date}</p>
+          <Share id={id} />
         </div>
         <Image
           src={article.imgUrl}
-          alt=""
+          alt={article.Heading}
           width={800}
           height={400}
           className="my-4 w-full rounded"

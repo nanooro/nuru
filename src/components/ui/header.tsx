@@ -15,14 +15,13 @@ export default function Header({ setTheme, theme }) {
   if (!mounted) return null;
 
   return (
-    <div className="sticky top-0 left-0 w-screen h-12 z-50">
-      <div className="flex items-center justify-start w-full h-full px-0 relative">
-        <div className="w-full h-full flex justify-start items-center z-50 bg-white/60 dark:bg-black/60 backdrop-blur-md shadow-sm">
-          <div className="flex items-center justify-start w-full px-2 relative">
+    <div className="fixed top-4 left-1/2 -translate-x-1/2 h-auto z-50 w-[95vw]">
+      <div className="flex items-center justify-start h-full px-0 relative">
+        <div className="h-full flex justify-between items-center z-50 bg-white/60 dark:bg-black/60 backdrop-blur-md shadow-lg rounded-[2rem] w-full px-6">
             <Link href="/">
-              <h1 className="text-5xl font-bold">Nannuru</h1>
+              <h1 className="font-bold text-3xl sm:text-4xl lg:text-5xl py-4">Nannuru</h1>
             </Link>
-            <div className="ml-auto flex items-center gap-2 mr-4">
+            <div className="flex items-center gap-2">
               <Button
                 onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
                 aria-label="Toggle theme"
@@ -62,7 +61,6 @@ export default function Header({ setTheme, theme }) {
               </Button>
               <Menu />
             </div>
-          </div>
         </div>
       </div>
     </div>

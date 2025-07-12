@@ -1,18 +1,11 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Geist, Geist_Mono } from "next/font/google";
+import type { Metadata } from "next";
+import HeaderClientWrapper from "../components/ui/HeaderClientWrapper";
 import { ThemeProviderClient } from "./ThemeProviderClient";
-import Head from "next/head"; // ✅ add this
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
+const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://nannuru.com"),
@@ -32,21 +25,19 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+import Footer from "../components/ui/Footer";
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <Head>
-        <link rel="icon" href="/logo.jpg" type="image/jpeg" />
-      </Head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased dark`}
-        style={{ colorScheme: "dark" }}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ThemeProviderClient>{children}</ThemeProviderClient>
+        <ThemeProviderClient>
+          <HeaderClientWrapper />
+          <main className="pt-24">{children}</main>
+          <Footer />
+        </ThemeProviderClient>
       </body>
     </html>
   );

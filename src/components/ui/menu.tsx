@@ -36,6 +36,9 @@ export default function Menu() {
         <DropdownMenuItem asChild>
           <Link href="/articles">articles</Link>
         </DropdownMenuItem>
+        <DropdownMenuItem asChild>
+          <Link href="/about">About</Link>
+        </DropdownMenuItem>
         {/* <DropdownMenuItem asChild>
           <Link href="/contact">Contact</Link>
         </DropdownMenuItem> */}

@@ -48,11 +48,21 @@ export async function generateMetadata(props: any): Promise<Metadata> {
 export default async function Page(props: any) {
   const { params } = await props;
 
+  const { data: article } = await supabase
+    .from("Nannuru_articles_table")
+    .select("*")
+    .eq("id", params.id)
+    .single();
+
   const { data: moreArticles } = await supabase
     .from("Nannuru_articles_table")
-    .select("id, Heading, imgUrl")
-    .neq("id", params.id) // exclude current article
-    .limit(4); // limit to 4 more
+    .select("id, Heading, imgUrl, date, rating")
+    .neq("id", params.id) 
+    .limit(4); 
 
-  return <ArticleRead id={params.id} more={moreArticles || []} />;
+  if (!article) {
+    return <div>Article not found</div>;
+  }
+
+  return <ArticleRead id={params.id} more={moreArticles || []} article={article} />;
 }
