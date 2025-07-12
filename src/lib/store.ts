@@ -13,14 +13,29 @@ type ArticleStore = {
   fetchArticles: () => Promise<void>;
 };
 
-import { create } from 'zustand';
-import { articles as mockArticles } from './mockData';
-
-export const useArticleStore = create((set) => ({
+export const useArticleStore = create<ArticleStore>((set) => ({
   articles: [],
   fetchArticles: async () => {
-    // Simulate API latency
-    await new Promise((resolve) => setTimeout(resolve, 500));
-    set({ articles: mockArticles });
+    try {
+      console.log("🔄 Fetching real articles…");
+      const res = await fetch(
+        "https://dhnrkykrkxucnmymcekb.supabase.co/functions/v1/get-articles",
+        {
+          headers: {
+            apikey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+            Authorization: `Bearer ${process.env
+              .NEXT_PUBLIC_SUPABASE_ANON_KEY!}`,
+          },
+        }
+      );
+
+      if (!res.ok) throw new Error(`status ${res.status}`);
+
+      const data = await res.json();
+      console.log("✅ Articles received:", data);
+      set({ articles: data || [] });
+    } catch (err: any) {
+      console.error("❌ Real fetch failed:", err.message || err);
+    }
   },
 }));
