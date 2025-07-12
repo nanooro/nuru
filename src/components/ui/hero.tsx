@@ -1,6 +1,12 @@
 import { motion } from "framer-motion";
 
-export default function Hero({ theme }: { theme: string }) {
+export default function Hero({ theme, articlesRef }: { theme: string; articlesRef: React.RefObject<HTMLDivElement> }) {
+  const handleScroll = () => {
+    if (articlesRef.current) {
+      articlesRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <div className="flex flex-col items-center justify-center text-center min-h-[calc(100vh-10rem)] py-20 relative">
       <h1 className="text-5xl sm:text-6xl md:text-8xl font-bold">
@@ -13,13 +19,14 @@ export default function Hero({ theme }: { theme: string }) {
         </span>
       </h1>
       <motion.div
-        className="absolute bottom-10"
+        className="absolute bottom-10 cursor-pointer"
         animate={{ y: [0, 10, 0] }}
         transition={{
           duration: 1.5,
           repeat: Infinity,
           repeatType: "loop",
         }}
+        onClick={handleScroll}
       >
         <svg
           className="w-10 h-10 text-gray-500 dark:text-gray-400"

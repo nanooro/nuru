@@ -17,7 +17,7 @@ export default function Header({ setTheme, theme }) {
   return (
     <div className="fixed top-4 left-1/2 -translate-x-1/2 h-auto z-50 w-[95vw]">
       <div className="flex items-center justify-start h-full px-0 relative">
-        <div className="h-full flex justify-between items-center z-50 bg-white/60 dark:bg-black/60 backdrop-blur-md shadow-lg rounded-[2rem] w-full px-4 sm:px-6">
+        <div className="h-full flex justify-between items-center z-50 bg-white/60 dark:bg-black/60 backdrop-blur-md shadow-lg dark:shadow-md dark:shadow-gray-300/50 rounded-[2rem] w-full px-4 sm:px-6">
             <Link href="/">
               <h1 className="font-bold text-3xl sm:text-4xl lg:text-5xl py-4">Nannuru</h1>
             </Link>

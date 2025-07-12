@@ -45,7 +45,7 @@ export default function ArticlesList() {
         <h1 className="text-3xl font-bold mb-6 text-center">Articles</h1>
 
         <motion.div
-          className="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-2"
+          className="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-2 justify-items-center"
           initial="hidden"
           animate="visible"
           variants={{

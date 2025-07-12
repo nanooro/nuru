@@ -17,6 +17,8 @@ export default function ArticleRead({ id, more, article: initialArticle }: { id:
   const [moreArticles, setMoreArticles] = useState<any[]>(more);
 
   useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to top on article ID change
+
     const fetchArticle = async () => {
       if (!id) return;
 
@@ -68,7 +70,16 @@ export default function ArticleRead({ id, more, article: initialArticle }: { id:
       <div className="p-4 max-w-3xl mx-auto">
         <h1 className="text-xl sm:text-2xl font-bold">{article.Heading}</h1>
         <div className="flex items-center justify-between w-full my-2">
-          <p className="text-sm text-gray-500">{article.date}</p>
+          <div className="flex items-center gap-2">
+            <Image
+              src="/logo.jpg" // Placeholder for author avatar
+              alt="Author Avatar"
+              width={32}
+              height={32}
+              className="rounded-full"
+            />
+            <p className="text-sm text-gray-500">Nannuru Team - {article.date}</p>
+          </div>
           <Share id={id} />
         </div>
         <Image

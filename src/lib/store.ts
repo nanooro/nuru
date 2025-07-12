@@ -1,4 +1,5 @@
-import { create } from "zustand";
+import { create } from 'zustand';
+import { articles as mockArticles } from './mockData'; // Import mock data
 
 type Article = {
   id: number;
@@ -17,7 +18,6 @@ export const useArticleStore = create<ArticleStore>((set) => ({
   articles: [],
   fetchArticles: async () => {
     try {
-      console.log("🔄 Fetching real articles…");
       const res = await fetch(
         "https://dhnrkykrkxucnmymcekb.supabase.co/functions/v1/get-articles",
         {
@@ -32,10 +32,11 @@ export const useArticleStore = create<ArticleStore>((set) => ({
       if (!res.ok) throw new Error(`status ${res.status}`);
 
       const data = await res.json();
-      console.log("✅ Articles received:", data);
       set({ articles: data || [] });
     } catch (err: any) {
       console.error("❌ Real fetch failed:", err.message || err);
+      console.log("Fallback to mock data.");
+      set({ articles: mockArticles }); // Fallback to mock data
     }
   },
 }));

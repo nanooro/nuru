@@ -9,11 +9,14 @@ import { useArticleStore } from "@/lib/store";
 import ArticleCard from "@/components/ui/articleCard";
 import Link from "next/link";
 
+import { useRef } from "react";
+
 export default function Home() {
   const { setTheme, theme } = useTheme();
   const articles = useArticleStore((s) => s.articles);
   const fetchArticles = useArticleStore((s) => s.fetchArticles);
   const [loading, setLoading] = useState(true);
+  const articlesRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const load = async () => {
@@ -25,17 +28,18 @@ export default function Home() {
 
   return (
     <div className="p-0 ">
-      <Hero theme={theme} />
+      <Hero theme={theme} articlesRef={articlesRef} />
       <div className="p-4 max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.9, ease: "easeInOut" }}
+          ref={articlesRef}
         >
           <h2 className="text-3xl font-bold text-center mb-12">Featured Articles</h2>
           <motion.div
-            className="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-8"
+            className="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-8 justify-items-center"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
