@@ -38,6 +38,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <main className="pt-24">{children}</main>
           <Footer />
         </ThemeProviderClient>
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4024268965242939"
+     crossorigin="anonymous"></script>
       </body>
     </html>
   );
