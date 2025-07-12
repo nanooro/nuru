@@ -79,21 +79,19 @@ export default function ArticlesList() {
               ))}
         </motion.div>
 
-        {!loading && (
-          <div className="mt-20 text-center bg-muted/40 p-6 rounded-xl">
-            <h2 className="text-2xl font-semibold mb-2">Got something to share?</h2>
-            <p className="mb-4 text-muted-foreground">
-              Create your own articles and get featured on Nannuru.
-            </p>
-            <a
-              href="https://create.nannuru.com"
-              target="_blank"
-              className="inline-block px-6 py-2 bg-indigo-600 text-white rounded-lg font-medium hover:bg-indigo-700 transition"
-            >
-              Start Writing →
-            </a>
-          </div>
-        )}
+        <div className="mt-20 text-center bg-muted/40 p-6 rounded-xl">
+          <h2 className="text-2xl font-semibold mb-2">Got something to share?</h2>
+          <p className="mb-4 text-muted-foreground">
+            Create your own articles and get featured on Nannuru.
+          </p>
+          <a
+            href="https://create.nannuru.com"
+            target="_blank"
+            className="inline-block px-6 py-2 bg-indigo-600 text-white rounded-lg font-medium hover:bg-indigo-700 transition"
+          >
+            Start Writing →
+          </a>
+        </div>
       </div>
     </div>
   );
