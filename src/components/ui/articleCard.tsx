@@ -13,7 +13,7 @@ export default function ArticleCard({
   return (
     <motion.div
       whileTap={{ scale: 0.95 }}
-      className="bg-white dark:bg-neutral-900 w-[250px] rounded-xl shadow transition-all duration-300 hover:shadow-xl hover:-translate-y-1 m-4 flex-shrink-0"
+      className="bg-white dark:bg-neutral-900 w-[250px] rounded-xl shadow transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,255,255,0.1)] dark:hover:shadow-[0_0_15px_rgba(255,255,255,0.1)] hover:-translate-y-1 m-4 flex-shrink-0"
       aria-label="card-overlay-v3"
     >
       <div className="w-full rounded-t-xl h-[250px] flex-shrink-0 relative overflow-hidden">
