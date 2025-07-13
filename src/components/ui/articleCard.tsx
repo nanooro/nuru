@@ -10,7 +10,7 @@ export default function ArticleCard({
   return (
     <motion.div
       whileTap={{ scale: 0.95 }}
-      className="bg-white dark:bg-neutral-900 w-[250px] rounded-xl shadow transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,255,255,0.1)] dark:hover:shadow-[0_0_15px_rgba(255,255,255,0.1)] hover:-translate-y-1 m-4 flex-shrink-0"
+      className="group bg-white dark:bg-neutral-900 w-[250px] rounded-xl shadow transition-all duration-300 hover:shadow-2xl dark:hover:shadow-none hover:-translate-y-1 m-4 flex-shrink-0"
       aria-label="card-overlay-v3"
     >
       <div className="w-full rounded-t-xl h-[250px] flex-shrink-0 relative overflow-hidden">
@@ -37,15 +37,19 @@ export default function ArticleCard({
         <div className="flex items-center justify-between w-full mt-auto">
           <div className="flex items-center gap-2 text-sm text-slate-400 dark:text-slate-300">
             {article.author?.avatar_url ? (
-              <Image
-                src={article.author.avatar_url}
-                alt={article.author.full_name || "Author Avatar"}
-                width={20}
-                height={20}
-                className="rounded-full"
-              />
+              <div className="w-8 h-8 rounded-full overflow-hidden flex-shrink-0 transition-transform duration-300 group-hover:scale-110">
+                <Image
+                  src={article.author.avatar_url}
+                  alt={article.author.full_name || "Author Avatar"}
+                  width={32}
+                  height={32}
+                  className="object-cover w-full h-full"
+                />
+              </div>
             ) : (
-              <User className="w-5 h-5" />
+              <div className="w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover:scale-110">
+                <User className="w-6 h-6 text-gray-500 dark:text-gray-400" />
+              </div>
             )}
             <span>{article.author?.full_name || 'N/A'} - {article.date}</span>
           </div>

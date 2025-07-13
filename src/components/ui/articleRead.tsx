@@ -11,11 +11,18 @@ import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { User } from "lucide-react";
 
+type Profile = {
+  id: string;
+  full_name: string;
+  avatar_url: string;
+};
+
 export default function ArticleRead({ id, more, article: initialArticle }: { id: string, more: any[], article: any }) {
   const { setTheme, theme } = useTheme();
 
   const [article, setArticle] = useState<any>(initialArticle);
   const [moreArticles, setMoreArticles] = useState<any[]>(more);
+  const [authorProfile, setAuthorProfile] = useState<Profile | null>(null);
 
   useEffect(() => {
     window.scrollTo(0, 0); // Scroll to top on article ID change
@@ -25,11 +32,23 @@ export default function ArticleRead({ id, more, article: initialArticle }: { id:
 
       const { data, error } = await supabase
         .from("Nannuru_articles_table")
-        .select("*, profiles(full_name, avatar_url)")
+        .select("*")
         .eq("id", id)
         .single();
 
-      if (!error && data) setArticle(data);
+      if (!error && data) {
+        setArticle(data);
+        if (data.user_id) {
+          const { data: profileData, error: profileError } = await supabase
+            .from('profiles')
+            .select('full_name, avatar_url')
+            .eq('id', data.user_id)
+            .single();
+          if (!profileError && profileData) {
+            setAuthorProfile(profileData);
+          }
+        }
+      }
     };
 
     const fetchMoreArticles = async () => {
@@ -72,18 +91,22 @@ export default function ArticleRead({ id, more, article: initialArticle }: { id:
         <h1 className="text-xl sm:text-2xl font-bold">{article.Heading}</h1>
         <div className="flex items-center justify-between w-full my-2">
           <div className="flex items-center gap-2">
-            {article.author?.avatar_url ? (
-              <Image
-                src={article.author.avatar_url}
-                alt={article.author.full_name || "Author Avatar"}
-                width={32}
-                height={32}
-                className="rounded-full"
-              />
+            {authorProfile?.avatar_url ? (
+              <div className="w-10 h-10 rounded-full overflow-hidden flex-shrink-0 transition-transform duration-300 hover:scale-110">
+                <Image
+                  src={authorProfile.avatar_url}
+                  alt={authorProfile.full_name || "Author Avatar"}
+                  width={40}
+                  height={40}
+                  className="object-cover w-full h-full"
+                />
+              </div>
             ) : (
-              <User className="w-8 h-8 text-gray-500" />
+              <div className="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center flex-shrink-0 transition-transform duration-300 hover:scale-110">
+                <User className="w-8 h-8 text-gray-500 dark:text-gray-400" />
+              </div>
             )}
-            <p className="text-sm text-gray-500">{article.author?.full_name || 'N/A'} - {article.date}</p>
+            <p className="text-sm text-gray-500">{authorProfile?.full_name || 'N/A'} - {article.date}</p>
           </div>
           <Share id={id} />
         </div>
