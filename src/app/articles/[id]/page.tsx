@@ -1,11 +1,5 @@
 import ArticleRead from "@/components/ui/articleRead";
-import { createClient } from "@supabase/supabase-js";
-import type { Metadata } from "next";
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
+import { supabase } from "@/lib/supabaseClient";
 
 type Props = {
   params: { id: string };
@@ -22,10 +16,13 @@ export async function generateMetadata(props: any): Promise<Metadata> {
 
   if (!article) return { title: "Not Found" };
 
+  const authorName = "Nannuru Team";
+  const title = `${article.Heading} by ${authorName}`;
+
   return {
-    title: article.Heading,
+    title,
     openGraph: {
-      title: article.Heading,
+      title,
       description: article.subHeading || article.Heading,
       url: `https://nannuru.com/articles/${params.id}`,
       images: [
@@ -39,7 +36,7 @@ export async function generateMetadata(props: any): Promise<Metadata> {
     },
     twitter: {
       card: "summary_large_image",
-      title: article.Heading,
+      title,
       images: [article.imgUrl],
     },
   };

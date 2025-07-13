@@ -1,5 +1,11 @@
 import { create } from 'zustand';
-import { articles as mockArticles } from './mockData'; // Import mock data
+import { supabase } from './supabaseClient';
+
+type Profile = {
+  id: string;
+  full_name: string;
+  avatar_url: string;
+};
 
 type Article = {
   id: number;
@@ -7,36 +13,50 @@ type Article = {
   subHeading: string;
   imgUrl: string;
   created_at: string;
+  user_id: string;
+  author?: Profile; // Optional author profile
 };
 
 type ArticleStore = {
   articles: Article[];
+  profiles: Profile[];
   fetchArticles: () => Promise<void>;
+  fetchProfiles: () => Promise<void>;
+  matchAuthors: () => void;
 };
 
-export const useArticleStore = create<ArticleStore>((set) => ({
+export const useArticleStore = create<ArticleStore>((set, get) => ({
   articles: [],
+  profiles: [],
   fetchArticles: async () => {
     try {
-      const res = await fetch(
-        "https://dhnrkykrkxucnmymcekb.supabase.co/functions/v1/get-articles",
-        {
-          headers: {
-            apikey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-            Authorization: `Bearer ${process.env
-              .NEXT_PUBLIC_SUPABASE_ANON_KEY!}`,
-          },
-        }
-      );
+      const { data, error } = await supabase
+        .from('Nannuru_articles_table')
+        .select('*');
 
-      if (!res.ok) throw new Error(`status ${res.status}`);
+      if (error) throw error;
 
-      const data = await res.json();
       set({ articles: data || [] });
     } catch (err: any) {
-      console.error("❌ Real fetch failed:", err.message || err);
-      console.log("Fallback to mock data.");
-      set({ articles: mockArticles }); // Fallback to mock data
+      console.error('❌ Fetching articles failed:', err.message || err);
+      set({ articles: [] });
     }
+  },
+  fetchProfiles: async () => {
+    try {
+      const { data, error } = await supabase.from('profiles').select('*');
+      if (error) throw error;
+      set({ profiles: data || [] });
+    } catch (err: any) {
+      console.error('❌ Fetching profiles failed:', err.message || err);
+    }
+  },
+  matchAuthors: () => {
+    const { articles, profiles } = get();
+    const articlesWithAuthors = articles.map((article) => {
+      const author = profiles.find((profile) => profile.id === article.user_id);
+      return { ...article, author };
+    });
+    set({ articles: articlesWithAuthors });
   },
 }));

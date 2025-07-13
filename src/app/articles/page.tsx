@@ -12,11 +12,15 @@ export default function ArticlesList() {
   const { setTheme, theme } = useTheme();
   const articles = useArticleStore((s) => s.articles);
   const fetchArticles = useArticleStore((s) => s.fetchArticles);
+  const fetchProfiles = useArticleStore((s) => s.fetchProfiles);
+  const matchAuthors = useArticleStore((s) => s.matchAuthors);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const load = async () => {
-      if (articles.length === 0) await fetchArticles();
+      await fetchArticles();
+      await fetchProfiles();
+      matchAuthors();
       setLoading(false);
     };
     load();
@@ -73,6 +77,7 @@ export default function ArticlesList() {
                         new Date(article.created_at).toDateString()
                       }
                       rating={article.rating || ""}
+                      article={article}
                     />
                   </Link>
                 </motion.div>

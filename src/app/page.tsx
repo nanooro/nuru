@@ -61,13 +61,7 @@ export default function Home() {
                   >
                     <Link href={`/articles/${article.id}`}>
                       <ArticleCard
-                        imgUrl={article.imgUrl}
-                        Heading={article.Heading}
-                        date={
-                          article.date ||
-                          new Date(article.created_at).toDateString()
-                        }
-                        rating={article.rating || ""}
+                        article={article}
                       />
                     </Link>
                   </motion.div>
