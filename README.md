@@ -2,9 +2,3 @@
 
 A clean, fast, and simple blogging website built with [Next.js](https://nextjs.org).  
 Live at: [https://nannuru.com](https://nannuru.com)
-
-## 🚀 Getting Started
-
-Install dependencies and run the dev server:
-
-  
